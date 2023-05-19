@@ -214,3 +214,22 @@ INSERT INTO dog VALUES
 SELECT * FROM CAT
 UNION
 SELECT * FROM DOG;
+
+-- 2023년 5월 19일
+-- MySQL은 FULL OUTER JOIN을 UNION을 이용해서 합니다.
+-- LEFT 조인 구문 UNION RIGHT 조인 구문 순으로 작성하면 됩니다.
+SELECT p.mem_num, m.mem_name, m.mem_addr,
+		p.pur_date, p.pur_num, p.pur_price 
+FROM member_tbl m LEFT JOIN purchase_tbl p
+USING (mem_num)
+
+UNION
+
+SELECT p.mem_num, m.mem_name, m.mem_addr,
+		p.pur_date, p.pur_num, p.pur_price 
+FROM member_tbl m RIGHT JOIN purchase_tbl p
+USING (mem_num);
+
+SELECT * FROM member_tbl;
+SELECT * FROM purchase_tbl;
+
